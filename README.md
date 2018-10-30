@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
+# SimpleManagement
+An application for freelancers for organizing their web projects
+
+## Getting started 
+The following tools must be installed:
+- **WebStorm:** Download and install WebStorm 
+- **node.js:** Download and install node.js
+- **Firebase:** Log in to https://firebase.google.com/ and set up a new project
+- **angular/cli:** Execute console input, which is shown on following website: https://cli.angular.io
+- **Git:** Download and install Git for Windows
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
