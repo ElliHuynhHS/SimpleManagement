@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { AngularFirestore } from 'angularfire2/firestore'
-import { Observable} from 'rxjs';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
     this.user = _firebaseAuth.authState;
     this.user.subscribe(
       (user) => {
-        if(user) {
+        if (user) {
           this.userDetails = user;
         } else {
           this.userDetails = null;
@@ -25,5 +25,11 @@ export class AuthService {
       }
     );
   }
+
+  /** Method to validate and sign in user with email and password */
+signInEmail_DB(email, password){
+  const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+  return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password);
+}
 
 }

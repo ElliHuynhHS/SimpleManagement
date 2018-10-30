@@ -1,10 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {LoginComponent} from './login/login.component';
+import {Routes, RouterModule} from '@angular/router';
+import {main} from '@angular/compiler-cli/src/main';
+import {MainComponent} from './main/main.component';
 
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
-})
-export class AppRoutingModule { }
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
+
+  {
+    path: 'main',
+    component: MainComponent
+  },
+
+
+  {
+    path: 'login',
+    component: LoginComponent
+  }];
+
+export const AppRoutes = RouterModule.forRoot(appRoutes);
