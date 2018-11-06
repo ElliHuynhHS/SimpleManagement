@@ -9,7 +9,6 @@ const appRoutes: Routes = [
     path: '',
     component: LoginComponent
   },
-
   {
     path: 'main',
     component: MainComponent
@@ -19,7 +18,7 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'sing-up',
+    path: 'sign-up',
     component: SignUpComponent
   }];
 

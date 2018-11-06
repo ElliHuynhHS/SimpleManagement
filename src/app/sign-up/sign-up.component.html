@@ -1,40 +1,70 @@
-<div >
-  <form [formGroup]='signupForm' (ngSubmit)="register()">
-    <div class="form-container">
+  <div class="signup">
+    <form [formGroup]='signupForm' (ngSubmit)="register()">
+      <div class="form-container">
 
-      <!-- Input field username -->
-      <div>
-        <input type="text" formControlName='username' name='username' id='username' placeholder="Username">
+        <!-- Input field username -->
+        <div>
+          <input type="text" formControlName='username' name='username' id='username' placeholder="Username">
+          <div *ngIf="signupForm.controls['username'].touched && !signupForm.controls['username'].valid">
+             <span *ngIf="signupForm.controls['username'].hasError('required') ">
+            First name is required
+            </span>
+            <span *ngIf="signupForm.controls['username'].hasError('minlength') ">
+             Min length is 3
+            </span>
+            <span *ngIf="signupForm.controls['username'].hasError('maxlength') ">
+            Max length is 15
+            </span>
+          </div>
+        </div>
+
+        <!-- Input field email -->
+        <div>
+          <input type="text" formControlName='email' name='email' id='email' placeholder="Email">
+          <div *ngIf="signupForm.controls['email'].touched && !signupForm.controls['email'].valid">
+            <span *ngIf="signupForm.controls['email'].hasError('pattern') ">
+            Pattern: example@example.com
+            </span>
+          </div>
+        </div>
+
+        <!-- Input field password -->
+        <div>
+          <input type="password" formControlName='password' name='password' id='password' placeholder="Password">
+          <div *ngIf="signupForm.controls['password'].touched && !signupForm.controls['password'].valid">
+            <span *ngIf="signupForm.controls['password'].hasError('minlength') ">
+             Min length is 6
+            </span>
+            <br/>
+            <span *ngIf="signupForm.controls['password'].hasError('maxlength') ">
+            Max length is 35
+            </span>
+            <span *ngIf="signupForm.controls['password'].hasError('pattern') ">
+              Must have at least one capital letter and one number
+            </span>
+          </div>
+        </div>
+
+        <!-- Input field confirm password -->
+        <div>
+          <input type="password" formControlName='confirmPassword' name='confirmPassword' id='confirmPassword'
+                 placeholder="Confirm password">
+          <div *ngIf="signupForm.controls['confirmPassword'].touched && !signupForm.controls['confirmPassword'].valid">
+            <span *ngIf="signupForm.controls['confirmPassword'].hasError('notSame') ">
+            Password doesn't match
+            </span>
+          </div>
+        </div>
+
+        <!-- Button for signup -->
+        <button type="submit" [disabled]='!signupForm.valid'>
+          Register
+        </button>
+
+        <!-- Button for login -->
+        <a [routerLink]="['/login']" >Cancel</a>
 
       </div>
+    </form>
+  </div>
 
-      <!-- Input field email -->
-      <div>
-        <input type="text" formControlName='email' name='email' id='email' placeholder="Email">
-
-      </div>
-
-      <!-- Input field password -->
-      <div>
-        <input type="password" formControlName='password' name='password' id='password' placeholder="Password">
-
-      </div>
-
-      <!-- Input field confirm password -->
-      <div>
-        <input type="password" formControlName='confirmPassword' name='confirmPassword' id='confirmPassword'
-               placeholder="Confirm password">
-
-      </div>
-
-      <!-- Button for signup -->
-      <button type="submit" >
-        Register
-      </button>
-
-      <!-- Button for login -->
-      <a [routerLink]="['/login']" >Cancel</a>
-
-    </div>
-  </form>
-</div>

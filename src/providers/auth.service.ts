@@ -5,9 +5,7 @@ import * as firebase from 'firebase/app';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {Observable} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
   private user: Observable<firebase.User>;
@@ -32,4 +30,28 @@ signInEmail_DB(email, password){
   return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password);
 }
 
+  signUpUser(email, password, username) {
+    const _name = username;
+    const _userId = this.userDetails.uid;
+    this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+      });
+    const doc = this.db.collection('users').doc(this.userDetails.uid);
+    try {
+      doc.set({
+        name: _name,
+        userId: _userId
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
