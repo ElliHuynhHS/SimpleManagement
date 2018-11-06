@@ -13,12 +13,14 @@ import { LoginComponent } from './login/login.component';
 import {AppRoutes} from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

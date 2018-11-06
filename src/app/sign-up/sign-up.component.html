@@ -1,0 +1,40 @@
+<div >
+  <form [formGroup]='signupForm' (ngSubmit)="register()">
+    <div class="form-container">
+
+      <!-- Input field username -->
+      <div>
+        <input type="text" formControlName='username' name='username' id='username' placeholder="Username">
+
+      </div>
+
+      <!-- Input field email -->
+      <div>
+        <input type="text" formControlName='email' name='email' id='email' placeholder="Email">
+
+      </div>
+
+      <!-- Input field password -->
+      <div>
+        <input type="password" formControlName='password' name='password' id='password' placeholder="Password">
+
+      </div>
+
+      <!-- Input field confirm password -->
+      <div>
+        <input type="password" formControlName='confirmPassword' name='confirmPassword' id='confirmPassword'
+               placeholder="Confirm password">
+
+      </div>
+
+      <!-- Button for signup -->
+      <button type="submit" >
+        Register
+      </button>
+
+      <!-- Button for login -->
+      <a [routerLink]="['/login']" >Cancel</a>
+
+    </div>
+  </form>
+</div>
