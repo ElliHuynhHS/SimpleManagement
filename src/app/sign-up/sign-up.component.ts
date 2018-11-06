@@ -71,8 +71,6 @@ export class SignUpComponent implements OnInit {
   }
 
   register() {
-    console.log('aufgerufen register()');
-    console.log(this.signupForm);
     const erg = this.authService.signUpUser(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.username);
     if (erg) {
       confirm('Registration successful');
