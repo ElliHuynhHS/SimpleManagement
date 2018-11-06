@@ -78,6 +78,7 @@ export class SignUpComponent implements OnInit {
       confirm('Registration successful');
       this.router.navigate(['login']);
     } else {
+      confirm('Registration unsuccesful');
       console.log('error: Registration failed');
     }
   }
