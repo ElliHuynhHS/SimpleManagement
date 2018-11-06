@@ -1,0 +1,37 @@
+<form name="userform" method="post" #formCtrl="ngForm">
+  <h2>Projects</h2>
+  <h3>Project Name</h3>
+  <div class="form-group">
+    <input type="text" value="" id="name" class="form-control" [(ngModel)]="project.name" name="name" required>
+  </div>
+  <div class="form-group">
+      <textarea id="inputTextarea" onkeyup="resizeTextarea('inputTextarea')"
+                class="form-control" [(ngModel)]="project.description" name="description"></textarea>
+  </div>
+  <h3>SELECT START</h3>
+  <div class="form-group">
+    <input type="date" id="start" class="form-control" [(ngModel)]="project.start" name="start" required>
+  </div>
+  <h3>SELECT DEADLINE</h3>
+  <div class="form-group">
+    <input type="date" id="deadline" class="form-control" [(ngModel)]="project.deadline" name="deadline" required>
+  </div>
+  <h3>Cost</h3>
+  <div class="form-group">
+    <input type="number" value="" class="currency-input" id="cost" class="form-control" [(ngModel)]="project.cost"
+           name="cost" required>
+  </div>
+  <button type="button" (click)="addNewToDo()">+</button>
+  <ul *ngFor="let task of checkboxJSON">
+    <li>
+      <input type="checkbox" (click)="checkboxChange($event, task.id)">
+      <label>{{task?.label}}</label>
+    </li>
+  </ul>
+  <button type="button" (click)="addNewNotice()">+</button>
+  <ul id="notice">
+
+  </ul>
+
+  <a (click)="saveNewProject()">Speichern</a>
+</form>

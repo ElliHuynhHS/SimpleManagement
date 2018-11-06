@@ -54,4 +54,34 @@ signInEmail_DB(email, password){
       return false;
     }
   }
+
+  addNewProject(project, checkbox, note){
+    const name = project.name;
+    const start = project.start;
+    const deadline = project.deadline;
+    const cost = project.cost;
+    const task = checkbox;
+    const notice = note;
+    const description = project.description;
+    var docId = this.db.createId();
+    var doc = this.db.collection('projects').doc(docId);
+
+    try{
+      doc.set({
+        userId: this.userDetails.uid,
+        name: name,
+        description: description,
+        start: start,
+        deadline: deadline,
+        cost: cost,
+        tasks: task,
+        notice: notice,
+        status: 1,
+        projectId: docId,
+      });
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
 }

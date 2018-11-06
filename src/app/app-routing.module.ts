@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {main} from '@angular/compiler-cli/src/main';
 import {MainComponent} from './main/main.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
+import {AddprojectComponent} from './addproject/addproject.component';
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent
+  },
+  {
+    path: 'addproject',
+    component: AddprojectComponent
   }];
 
 export const AppRoutes = RouterModule.forRoot(appRoutes);
