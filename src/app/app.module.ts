@@ -6,7 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment.prod'
+import { environment } from '../environments/environment.prod';
 
 import { AuthService } from '../providers/auth.service';
 import { LoginComponent } from './login/login.component';
