@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
-# SimpleManagement
+#  SimpleManagement
 An application for freelancers for organizing their web projects
 
 ## Getting started 
