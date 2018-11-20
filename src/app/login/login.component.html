@@ -1,21 +1,27 @@
-<div>
+<div class="main-wrapper">
+  <img class="logo" src="../../img/logo_big.png" width="370px" height="75px"/>
   <form name="userform" method="post" #formCtrl="ngForm">
 
 
-    <!-- Input field email -->
-    <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" required>
+    <div class="login">
+      <!-- Input field email -->
+      <input type="email" id="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" required>
 
-    <!-- Input field password -->
-    <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password" required>
+      <!-- Input field password -->
+      <input type="password" id="pword" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password"
+             required>
 
-    <!-- Button for login -->
-    <button type="button" id="button" (click)="signInWithEmail()">
-      Login
-    </button>
+      <!-- Button for login -->
+      <button type="button" id="button"(click)="signInWithEmail()"
+              [disabled]="formCtrl.form.invalid">
+        Login
+      </button>
 
-    <!-- Button for registration -->
-    <a [routerLink]="['/sign-up']">Sign Up</a>
+      <!-- Button for registration -->
+      <a [routerLink]="['/signup']">Register</a>
 
-
+    </div>
   </form>
+
 </div>
+
