@@ -1,3 +1,5 @@
+<div class="main-wrapper">
+  <img class="logo" src="../../img/logo_big.png" width="370px" height="75px"/>
   <div class="signup">
     <form [formGroup]='signupForm' (ngSubmit)="register()">
       <div class="form-container">
@@ -7,7 +9,7 @@
           <input type="text" formControlName='username' name='username' id='username' placeholder="Username">
           <div *ngIf="signupForm.controls['username'].touched && !signupForm.controls['username'].valid">
              <span *ngIf="signupForm.controls['username'].hasError('required') ">
-            Username is required
+            First name is required
             </span>
             <span *ngIf="signupForm.controls['username'].hasError('minlength') ">
              Min length is 3
@@ -62,9 +64,9 @@
         </button>
 
         <!-- Button for login -->
-        <a [routerLink]="['/login']" >Cancel</a>
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
 
       </div>
     </form>
   </div>
-
+</div>
