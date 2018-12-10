@@ -1,5 +1,24 @@
-<p>
-  main works!
-</p>
-<!-- Button for login -->
-<a [routerLink]="['/addproject']" >Add Project</a>
+<a [routerLink]="['/profile']"><img src="assets/img/btn_profile.png" width="50px" height="41px"/></a>
+
+
+<h2>Projects</h2>
+
+<a [routerLink]="['/addproject']">Add New</a>
+
+
+
+<h3 class="left">Project Name</h3>
+<h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>
+
+
+
+<ul *ngFor="let project of projects | async ">
+  <a [routerLink]="['/projectDetails', {'projectId': project.projectId}]">
+    <li >
+      <div>{{project.name}}</div>
+      <div >{{project.cost}}$</div>
+    </li>
+  </a>
+</ul>
+
+
