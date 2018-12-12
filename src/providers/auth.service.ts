@@ -84,4 +84,8 @@ signInEmail_DB(email, password){
       return false;
     }
   }
+
+  getProjectsForUser() {
+    return this.db.collection('projects', ref => ref.where('userId', '==', this.userDetails.uid)).valueChanges();
+  }
 }
