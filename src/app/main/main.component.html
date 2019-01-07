@@ -1,24 +1,33 @@
 <a [routerLink]="['/profile']"><img src="assets/img/btn_profile.png" width="50px" height="41px"/></a>
 
+<div class="main-wrapper">
 
-<h2>Projects</h2>
-
-<a [routerLink]="['/addproject']">Add New</a>
-
-
-
-<h3 class="left">Project Name</h3>
-<h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>
-
+  <div class="main-header">
+    <h2>Projects</h2>
+    <div id="button">
+      <a [routerLink]="['/addproject']">Add New</a>
+    </div>
+  </div>
 
 
-<ul *ngFor="let project of projects | async ">
-  <a [routerLink]="['/projectDetails', {'projectId': project.projectId}]">
-    <li >
-      <div>{{project.name}}</div>
-      <div >{{project.cost}}$</div>
-    </li>
-  </a>
-</ul>
+  <div class="main-info">
+    <h3 class="left">Project Name</h3>
+    <h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>
+  </div>
+
+  <div>
+    <div class="main-content">
+      <ul *ngFor="let project of projects | async ">
+        <a [routerLink]="['/projectDetails', {'projectId': project.projectId}]">
+          <li class="p-wrapper pending">
+            <div class="p-name">{{project.name}}</div>
+            <div class="p-earning">{{project.cost}}$</div>
+          </li>
+        </a>
+      </ul>
+
+    </div>
+  </div>
 
 
+</div>
