@@ -81,7 +81,6 @@ body {
   font-weight: bold;
   color: #a8abbe;
 }
-
 .main-content h3 {
   font-family: arial, helvetica, sans-serif;
   font-size: 15px;
@@ -198,7 +197,7 @@ body {
 }
 .date-box select {
   height: 32px;
-  width: 50px;
+  width: 115px;
   padding: 5px;
   font-family: arial, sans-serif;
   font-size: 13px;
@@ -288,9 +287,6 @@ input[type=date] {
   margin-left: 30px;
   margin-top: 20px;
 }
-ul{
-  list-style-type: none;
-}
 .button-plus {
   height: 25px;
   width: 25px;
@@ -304,6 +300,18 @@ ul{
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.button-x {
+  height: 15px;
+  width: 15px;
+  font-size: 10px;
+  font-weight: normal;
+  color: #8d93ad;
+  background: #f7f6fc;
+  border: 1px solid #ecebf0;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 /* RADIOS & CHECKBOXES STYLES */
