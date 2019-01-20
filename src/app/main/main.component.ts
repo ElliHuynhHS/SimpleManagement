@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
-import {Observable} from 'rxjs';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -13,9 +12,12 @@ export class MainComponent implements OnInit {
   public projects: Observable<any[]>;
   cost: number = 0;
   pendingCost: number = 0;
+  term: any;
+  searchValue = 'name';
 
   constructor(public authService: AuthService) {
     this.projects = authService.getProjectsForUser();
+
     this.calculateCost();
     this.calculatePendingCost();
   }
@@ -53,4 +55,36 @@ export class MainComponent implements OnInit {
       }
     });
   }
+
+  getPercent(project) {
+    var ret = 0;
+    if (project.tasks.length != 0) {
+      var length = 0;
+      length = project.tasks.length;
+      var counter = 0;
+      for (let i = 0; i < project.tasks.length; i++) {
+        if (project.tasks[i].checked) {
+          counter++;
+        }
+      }
+      var erg = 0;
+      erg = (length / 100);
+      ret = (counter / erg);
+    }
+    else {
+      ret = 0;
+    }
+    return ret;
+  }
+
+  filterValue(value) {
+    this.searchValue = 'status';
+    if (value === 4) {
+      this.searchValue = 'name';
+      this.term = '';
+    } else {
+      this.term = value;
+    }
+  }
+
 }

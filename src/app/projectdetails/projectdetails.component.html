@@ -1,0 +1,165 @@
+<!--Navigation-->
+<div class="navi">
+  <div class="navi-wrapper">
+    <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
+    <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
+    <a class="right" [routerLink]="['/profile']"><img src="../../assets/btn_profile.png" width="50px" height="41px"/></a>
+  </div>
+</div>
+
+<!-- form -->
+<form name="userform" method="post" #formCtrl="ngForm">
+  <div *ngFor="let project of projects | async">
+    <div class="main-wrapper" >
+
+      <div class="main-header">
+        <h2>Projects</h2>
+        <div class="date-box" style="margin-left: 50px;">
+          <div class="form-group">
+            <select name="mydropdown" [(ngModel)]="project.status">
+              <option value="1">Pending</option>
+              <option value="2">Done</option>
+              <option value="3">Canceled</option>
+            </select>
+          </div>
+        </div>
+        <div id="button">
+          <a (click)="deleteProject(project.projectId)">Delete</a>
+        </div>
+      </div>
+
+      <div class="main-info">
+        <h3 class="left">Project Name</h3>
+      </div>
+
+      <div class="main-content">
+        <div class="form-group">
+          <input type="text" id="name" class="form-control" [(ngModel)]="project.name" name="name" required>
+        </div>
+        <ul style="margin: 0px;">
+
+          <!-- Description -->
+          <div class="main-content" style="clear:both;">
+            <ul style="margin: 0px;">
+              <li style="height: auto; display: block;" class="p-wrapper pending">
+                <div class="p-name bold">Description</div>
+                <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+                <div style="height: auto; width: auto; display: inline;">
+                  <div class="form-group">
+                  <textarea id="InputTextArea" onkeyup="resizeTextarea('InputTextArea')"
+                            class="form-control" [(ngModel)]="project.description" name="description"></textarea>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Basic Details -->
+          <li style="height: 150px; display: block;" class="p-wrapper pending">
+            <div class="p-name bold">Basic Details</div>
+            <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+            <div style="height: auto; width: auto; display: inline;">
+              <div class="date-box" style="margin-left: 30px;">
+                <h3>SELECT START</h3>
+                <div class="form-group">
+                  <input type="date" id="start" class="form-control" [(ngModel)]="project.start" name="start" required>
+                </div>
+              </div>
+              <div class="date-box" style="margin-left: 10px;">
+                <h3>SELECT DEADLINE</h3>
+                <div class="form-group">
+                  <input type="date" id="deadline" class="form-control" [(ngModel)]="project.deadline" name="deadline"
+                         required>
+                </div>
+              </div>
+              <div class="date-box" style="margin-left: 10px;">
+                <h3>CURRENCY</h3>
+                <div class="form-group">
+                  <input type="number" value="" id="cost" class="form-control"
+                         [(ngModel)]="project.cost" name="cost" required>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- To-Do-List -->
+          <li style="height: auto; display: block;" class="p-wrapper pending">
+            <div class="p-name bold">To-Do-List</div>
+            <button class="button-plus" type="button" (click)="addNewToDo(project.tasks)">+</button>
+            <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+            <div style="height: auto; width: auto; display: block;">
+              <div class="to-do-wrapper">
+                <ul id="includeCheckbox" *ngFor="let task of project.tasks">
+                  <li>
+                    <label>
+                      <input type="checkbox" [checked]="task?.checked">
+                      <label>{{task?.label}}</label>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <!-- Notes -->
+          <li style="height: auto; display: block;" class="p-wrapper pending">
+            <div class="p-name bold">Notes</div>
+            <button class="button-plus" type="button" (click)="addNewNotice(project.notice)">+</button>
+            <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+            <div style="height: auto; width: auto; display: block;">
+              <div class="to-do-wrapper">
+                <ul id="notice" *ngFor="let note of project.notice">
+                  <li>
+                    {{note}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <!-- Pictures -->
+          <li style="height: 230px;; display: block;" class="p-wrapper pending">
+            <div class="p-name bold">Pictures</div>
+            <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+
+            <div style="height: auto; width: auto; display: block;">
+              <div class="to-do-wrapper">
+                <div class="bilder-wrapper">
+                  <ul>
+                    <li>
+                      <image-upload
+                        (removed)="onRemoved($event)"
+                        (uploadFinished)="onUploadFinished($event)"
+                        (uploadStateChanged)="onUploadStateChanged($event)">[uploadedFiles]="images">
+                      </image-upload>
+                    </li>
+                  </ul>
+                  <ul id="imageUrl" *ngFor="let image of project.image">
+                    <li>
+                      <img src={{image}} alt="pic"/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div id="navi-bottom">
+      <div id="navi-bottom-wrapper">
+        <ul>
+          <li class="left">
+            <a class="left" [routerLink]="['/main']"><img src="../../assets/btn_back.png" width="45px" height="43px"/></a>
+          </li>
+          <li class="right">
+            <a (click)="updateProject(project)"><img src="../../assets/btn_save.png" width="160px" height="43px"/></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>
+

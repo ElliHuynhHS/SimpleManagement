@@ -1,18 +1,31 @@
+<!--Navigation-->
+<div class="navi">
+  <div class="navi-wrapper">
+    <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
+    <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
+    <a class="right" [routerLink]="['/profile']"><img src="../../assets/btn_profile.png" width="50px" height="41px"/></a>
+  </div>
+</div>
+
 <!-- form -->
 <form name="userform" method="post" #formCtrl="ngForm">
+
   <div class="main-wrapper">
+
     <div class="main-header">
       <h2>Projects</h2>
     </div>
+
     <div class="main-info">
-      <h3>Project Name</h3>
+      <h3 class="left">Project Name</h3>
     </div>
+
     <div class="main-content">
       <div class="form-group">
         <input type="text" value="" id="name" class="form-control" [(ngModel)]="project.name" name="name" required>
       </div>
       <ul style="margin: 0px;">
-        <!--Description-->
+        <!-- Description -->
         <div class="main-content" style="clear:both;">
           <ul style="margin: 0px;">
             <li style="height: auto; display: block;" class="p-wrapper pending">
@@ -20,15 +33,15 @@
               <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
               <div style="height: auto; width: auto; display: inline;">
                 <div class="form-group">
-                    <textarea id="inputTextarea" onkeyup="resizeTextarea('inputTextarea')"
-                              class="form-control" [(ngModel)]="project.description" name="description"></textarea>
+                  <textarea id="InputTextArea" onkeyup="resizeTextarea('InputTextArea')"
+                            class="form-control" [(ngModel)]="project.description" name="description"></textarea>
                 </div>
               </div>
             </li>
           </ul>
         </div>
 
-        <!--Basic Details-->
+        <!-- Basic Details -->
         <li style="height: 150px; display: block;" class="p-wrapper pending">
           <div class="p-name bold">Basic Details</div>
           <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
@@ -47,27 +60,26 @@
               </div>
             </div>
             <div class="date-box" style="margin-left: 10px;">
-
               <h3>Cost</h3>
               <div class="form-group">
                 <input type="number" value="" class="currency-input" id="cost" class="form-control"
-                       [(ngModel)]="project.cost"
-                       name="cost" required>
+                       [(ngModel)]="project.cost" name="cost" required>
               </div>
             </div>
           </div>
         </li>
 
-        <!--To-Do-List -->
+        <!-- To-Do-List -->
         <li style="height: auto; display: block;" class="p-wrapper pending">
           <div class="p-name bold">To-Do-List</div>
-          <button type="button" (click)="addNewToDo()">+</button>
+          <button class="button-plus" type="button" (click)="addNewToDo()">+</button>
+
           <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
           <div style="height: auto; width: auto; display: block;">
             <div class="to-do-wrapper">
               <ul *ngFor="let task of checkboxJSON">
                 <li>
-                  <input type="checkbox" (click)="checkboxChange($event, task.id)">
+                  <input type="checkbox" [checked]="task?.checked" (click)="checkboxChange($event, task.id)">
                   <label>{{task?.label}}</label>
                 </li>
               </ul>
@@ -78,13 +90,35 @@
         <!-- Notes -->
         <li style="height: auto; display: block;" class="p-wrapper pending">
           <div class="p-name bold">Notes</div>
-          <button type="button" (click)="addNewNotice()">+</button>
+          <button class="button-plus" type="button" (click)="addNewNotice()">+</button>
           <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
           <div style="height: auto; width: auto; display: block;">
             <div class="to-do-wrapper">
               <ul id="notice">
-
+                <li>
+                </li>
               </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Pictures -->
+        <li style="height: 230px;; display: block;" class="p-wrapper pending">
+          <div class="p-name bold">Pictures</div>
+          <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
+          <div style="height: auto; width: auto; display: block;">
+            <div class="to-do-wrapper">
+              <div class="bilder-wrapper">
+                <ul id="imageUrl">
+                  <li>
+                    <image-upload
+                      (removed)="onRemoved($event)"
+                      (uploadFinished)="onUploadFinished($event)"
+                      (uploadStateChanged)="onUploadStateChanged($event)">[uploadedFiles]="images">
+                    </image-upload>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </li>
@@ -97,13 +131,17 @@
     <div id="navi-bottom-wrapper">
       <ul>
         <li class="left">
-          <a class="left" [routerLink]="['/main']"><img src="../../assets/img/btn_back.png" width="45px" height="43px"/></a>
+          <a class="left" [routerLink]="['/main']"><img src="../../assets/btn_back.png" width="45px" height="43px"/></a>
         </li>
         <li class="right">
-          <a (click)="saveNewProject()">Speichern</a>
+          <a (click)="saveNewProject()"><img src="../../assets/btn_save.png" width="160px" height="43px"/></a>
         </li>
       </ul>
     </div>
   </div>
-
 </form>
+
+
+
+
+

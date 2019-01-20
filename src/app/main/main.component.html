@@ -1,24 +1,117 @@
-<a [routerLink]="['/profile']"><img src="assets/img/btn_profile.png" width="50px" height="41px"/></a>
+<!-- header -->
+<div class="navi">
+  <div class="navi-wrapper">
+    <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
+    <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
+    <a class="right" [routerLink]="['/profile']"><img src="../../assets/btn_profile.png" width="50px"
+                                                      height="41px"/></a>
+  </div>
+</div>
 
+<!-- main body -->
+<div class="main-wrapper">
+  <div class="main-header">
+    <h2>Projects</h2>
+    <div id="button">
+      <a [routerLink]="['/addProject']">Add New</a>
+    </div>
+  </div>
 
-<h2>Projects</h2>
+  <div class="main-info">
+    <h3 class="left">Project Name</h3>
+    <h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>
+  </div>
 
-<a [routerLink]="['/addproject']">Add New</a>
+  <div>
+    <div class="main-content">
+      <ul *ngFor="let project of projects | async | search: searchValue: term">
+        <div [ngSwitch]=project.status>
+          <a [routerLink]="['/projectDetails', {'projectId': project.projectId}]">
 
+            <!-- Pending Projects -->
+            <div *ngSwitchCase=1>
+              <li class="p-wrapper pending">
+                <div class="p-name ">{{project.name}}</div>
+                <div class="p-earning">{{project.cost}}$</div>
+                <circle-progress
+                  [percent]="getPercent(project)"
+                  [radius]="20"
+                  [outerStrokeWidth]="4"
+                  [innerStrokeWidth]="2"
+                  [outerStrokeColor]="'#47b59a'"
+                  [innerStrokeColor]="'#47b59a'"
+                  [animation]="true"
+                  [animationDuration]="50"
+                ></circle-progress>
+              </li>
+            </div>
 
+            <!-- Done Projects -->
+            <div *ngSwitchCase=2>
+              <li class="p-wrapper done">
+                <div class="p-name ">{{project.name}}</div>
+                <div class="p-earning  ">{{project.cost}}$</div>
+                <circle-progress
+                  [percent]="getPercent(project)"
+                  [radius]="20"
+                  [outerStrokeWidth]="4"
+                  [innerStrokeWidth]="2"
+                  [outerStrokeColor]="'#47b59a'"
+                  [innerStrokeColor]="'#47b59a'"
+                  [animation]="true"
+                  [animationDuration]="50"
+                ></circle-progress>
+              </li>
+            </div>
 
-<h3 class="left">Project Name</h3>
-<h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>
+            <!-- Canceled Projects -->
+            <div *ngSwitchCase=3>
+              <li class="p-wrapper cancelled">
+                <div class="p-name ">{{project.name}}</div>
+                <div class="p-earning  ">{{project.cost}}$</div>
+                <circle-progress
+                  [percent]="getPercent(project)"
+                  [radius]="20"
+                  [outerStrokeWidth]="4"
+                  [innerStrokeWidth]="2"
+                  [outerStrokeColor]="'#47b59a'"
+                  [innerStrokeColor]="'#47b59a'"
+                  [animation]="true"
+                  [animationDuration]="50"
+                ></circle-progress>
+              </li>
+            </div>
+          </a>
+        </div>
+      </ul>
+    </div>
+    <div>
 
+    </div>
+  </div>
+</div>
 
+<!-- footer -->
+<div id="navi-bottom">
+  <div id="navi-bottom-wrapper">
+    <ul>
+      <li class="left">
+        <input class="search-input" [(ngModel)]="term" placeholder="Search">
+      </li>
+      <li class="left">
+        <div class="dropup">
+          <a><img src="../../assets/btn_filter.png" width="160px" height="43px"/></a>
+          <div class="dropup-content">
+            <a (click)="filterValue(1)">Pending</a>
+            <a (click)="filterValue(2)">Done</a>
+            <a (click)="filterValue(3)">Canceled</a>
+            <a (click)="filterValue(4)">All</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<ul *ngFor="let project of projects | async ">
-  <a [routerLink]="['/projectDetails', {'projectId': project.projectId}]">
-    <li >
-      <div>{{project.name}}</div>
-      <div >{{project.cost}}$</div>
-    </li>
-  </a>
-</ul>
 
 

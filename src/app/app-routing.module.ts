@@ -4,6 +4,9 @@ import {main} from '@angular/compiler-cli/src/main';
 import {MainComponent} from './main/main.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {AddprojectComponent} from './addproject/addproject.component';
+import {AuthguardService} from '../providers/authguard.service';
+import {ProjectdetailsComponent} from './projectdetails/projectdetails.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const appRoutes: Routes = [
   {
@@ -12,6 +15,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'main',
+    canActivate: [AuthguardService],
     component: MainComponent
   },
   {
@@ -23,8 +27,19 @@ const appRoutes: Routes = [
     component: SignUpComponent
   },
   {
-    path: 'addproject',
-    component: AddprojectComponent
+    path: 'projectDetails',
+    // canActivate: [AuthguardService],
+    component: ProjectdetailsComponent
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthguardService],
+    component: ProfileComponent
+  },
+  {
+    path: 'addProject',
+    component: AddprojectComponent,
+    canActivate: [AuthguardService]
   }];
 
 export const AppRoutes = RouterModule.forRoot(appRoutes);

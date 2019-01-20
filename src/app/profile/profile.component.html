@@ -1,0 +1,71 @@
+<div class="navi">
+  <div class="navi-wrapper">
+    <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
+    <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
+  </div>
+</div>
+
+<div class="main-wrapper">
+
+  <div class="main-header">
+    <h2>Profile</h2>
+  </div>
+
+  <div class="main-content" style="clear: both;">
+    <ul>
+
+      <!-- Field username -->
+      <div class="main-info">
+        <h3>Username</h3>
+      </div>
+      <li class="p-wrapper pending" *ngFor="let user of userObject | async">
+        <input type="text" class="p-name p-input" [(ngModel)]="user.name" disabled="true">
+      </li>
+
+      <!-- Input field email -->
+      <div class="main-info">
+        <h3>Change Password</h3>
+      </div>
+      <form name="changeForm" method="post" #formCtrl="ngForm">
+        <li class="p-wrapper pending">
+          <input type="password" id="password" class="p-name p-input" [(ngModel)]="changeObject.password"
+                 name="password" placeholder="New Password">
+        </li>
+        <li class="p-wrapper pending">
+          <input type="password" id="confirmPassword" class="p-name p-input" [(ngModel)]="changeObject.confirmPassword"
+                 name="confirmPassword" placeholder="Confirm Password">
+        </li>
+
+        <!-- Input field password -->
+        <div class="main-info">
+          <h3>Change Email</h3>
+        </div>
+        <li class="p-wrapper pending">
+          <input type="text" id="email" class="p-name p-input" [(ngModel)]="changeObject.email" name="email"
+                 placeholder="New Email">
+        </li>
+        <li class="p-wrapper pending">
+          <input type="text" id="confirmEmail" class="p-name p-input" [(ngModel)]="changeObject.confirmEmail"
+                 name="confirmEmail" placeholder="Confirm Email">
+        </li>
+      </form>
+
+    </ul>
+  </div>
+</div>
+
+<footer class="footer">
+<div id="navi-bottom">
+  <div id="navi-bottom-wrapper">
+    <ul>
+      <li class="left">
+        <a class="left" [routerLink]="['/main']"><img src="../../assets/btn_back.png" width="45px" height="43px"/></a>
+      </li>
+      <li class="right">
+        <a (click)="onClickSave()"><img src="../../assets/btn_save.png" width="160px" height="43px"/></a>
+      </li>
+    </ul>
+  </div>
+</div>
+</footer>
+

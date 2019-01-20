@@ -1,6 +1,8 @@
-import {Component, IterableDiffers, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
+import {FileHolder} from 'angular2-image-upload';
 import {Router} from '@angular/router';
+import {Component, IterableDiffers, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-addproject',
@@ -20,6 +22,8 @@ export class AddprojectComponent implements OnInit {
 
   checkboxJSON: Array<any> = [];
   noticeJSON: Array<any> = [];
+  images: Array<any> = [];
+  imageFiles: Array<any> = [];
   isAddNewTodo = false;
   iterableDiffer: any;
   changes = false;
@@ -31,26 +35,26 @@ export class AddprojectComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
     this.changes = this.iterableDiffer.diff(this.checkboxJSON);
   }
 
-  addNewToDo(){
+  addNewToDo() {
     this.isAddNewTodo = true;
     var todo = window.prompt('Add a todo', 'defaultText');
     var checkboxId = this.generateId();
     this.checkboxJSON.push({'label': todo, 'checked': false, 'id': checkboxId});
   }
 
-  checkboxChange(event: any, id: any){
-    for(let task of this.checkboxJSON){
-      if(id === task.id){
+  checkboxChange(event: any, id: any) {
+    for (let task of this.checkboxJSON) {
+      if (id === task.id) {
         task.checked = event.currentTarget.checked;
       }
     }
   }
 
-  addNewNotice(){
+  addNewNotice() {
     var note = window.prompt('Add a note', 'defaultText');
     var noticeUl = document.getElementById('notice');
     var list = document.createElement('li');
@@ -61,16 +65,34 @@ export class AddprojectComponent implements OnInit {
     this.noticeJSON.push(note);
   }
 
-  saveNewProject(){
-    if(this.authService.addNewProject(this.project, this.checkboxJSON, this.noticeJSON)){
-      confirm('Save was sucessful');
+  async saveNewProject() {
+    this.images = await this.authService.saveToStorage(this.imageFiles);
+    if (this.authService.addNewProject(this.project, this.checkboxJSON, this.noticeJSON, this.images)) {
+      confirm('Save was successful');
       this.router.navigate(['main']);
-    }else{
+    } else {
       confirm('Save was unsuccessful');
     }
   }
 
-  generateId(){
+  generateId() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
+
+  async onUploadFinished(file: FileHolder) {
+    this.imageFiles.push(file);
+    console.log(this.imageFiles[0]);
+  }
+
+
+  onRemoved(file: FileHolder) {
+    this.imageFiles.forEach((item, index) => {
+      if (item === file) this.imageFiles.splice(index, 1);
+    });
+  }
+
+  onUploadStateChanged(state: boolean) {
+    console.log(state);
+  }
+
 }
