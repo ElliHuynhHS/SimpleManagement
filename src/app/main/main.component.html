@@ -1,5 +1,5 @@
 <!-- header -->
-<div class="navi">
+<div class="navi" xmlns:margin-top="http://www.w3.org/1999/xhtml">
   <div class="navi-wrapper">
     <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
     <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
@@ -17,6 +17,7 @@
     </div>
   </div>
 
+  <!-- cost bar -->
   <div class="main-info">
     <h3 class="left">Project Name</h3>
     <h3 class="right">Total: {{cost}}$ Pending: {{pendingCost}}$</h3>

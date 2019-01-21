@@ -1,16 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-
-
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {environment} from '../environments/environment.prod';
-
 import {AuthService} from '../providers/auth.service';
 import {LoginComponent} from './login/login.component';
 import {AppRoutes} from './app-routing.module';
@@ -23,7 +20,7 @@ import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ProjectdetailsComponent} from './projectdetails/projectdetails.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ImageUploadModule} from 'angular2-image-upload';
-import { SearchPipe } from '../providers/search-pipe.pipe';
+import {SearchPipe} from '../providers/search-pipe.pipe';
 
 
 @NgModule({

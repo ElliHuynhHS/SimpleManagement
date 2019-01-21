@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'projectDetails',
-    // canActivate: [AuthguardService],
+    canActivate: [AuthguardService],
     component: ProjectdetailsComponent
   },
   {

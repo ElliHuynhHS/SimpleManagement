@@ -11,6 +11,7 @@ import {Component, IterableDiffers, OnInit} from '@angular/core';
 })
 export class AddprojectComponent implements OnInit {
 
+  //project object
   project = {
     name: '',
     description: '',
@@ -35,10 +36,7 @@ export class AddprojectComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngDoCheck() {
-    this.changes = this.iterableDiffer.diff(this.checkboxJSON);
-  }
-
+  //function for new to do element
   addNewToDo() {
     this.isAddNewTodo = true;
     var todo = window.prompt('Add a todo', 'defaultText');
@@ -46,6 +44,7 @@ export class AddprojectComponent implements OnInit {
     this.checkboxJSON.push({'label': todo, 'checked': false, 'id': checkboxId});
   }
 
+  //check checkbox or uncheck checkbox
   checkboxChange(event: any, id: any) {
     for (let task of this.checkboxJSON) {
       if (id === task.id) {
@@ -54,6 +53,7 @@ export class AddprojectComponent implements OnInit {
     }
   }
 
+  //function for new note
   addNewNotice() {
     var note = window.prompt('Add a note', 'defaultText');
     var noticeUl = document.getElementById('notice');
@@ -65,6 +65,7 @@ export class AddprojectComponent implements OnInit {
     this.noticeJSON.push(note);
   }
 
+  //save the project
   async saveNewProject() {
     this.images = await this.authService.saveToStorage(this.imageFiles);
     if (this.authService.addNewProject(this.project, this.checkboxJSON, this.noticeJSON, this.images)) {
@@ -75,16 +76,18 @@ export class AddprojectComponent implements OnInit {
     }
   }
 
+  //uid for the project
   generateId() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
+  //function for the img upload
   async onUploadFinished(file: FileHolder) {
     this.imageFiles.push(file);
     console.log(this.imageFiles[0]);
   }
 
-
+  //function for removing the img
   onRemoved(file: FileHolder) {
     this.imageFiles.forEach((item, index) => {
       if (item === file) this.imageFiles.splice(index, 1);

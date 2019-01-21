@@ -25,6 +25,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  //function for register form with validators
   createForm() {
     this.signupForm = this.formBuilder.group({
       username: new FormControl('', {
@@ -66,10 +67,12 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  //function for checking if passwords match
   checkIfMatchingPasswords(control: AbstractControl): ValidationErrors | null {
     return this.signupForm.value.password === control.value ? null : {notSame: true};
   }
 
+  //register user
   register() {
     const erg = this.authService.signUpUser(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.username);
     if (erg) {

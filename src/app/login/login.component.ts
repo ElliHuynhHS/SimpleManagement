@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  //user object
   user = {
     name: '',
     email: '',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  //sign in user with email
   signInWithEmail() {
     this.authService.signInEmail_DB(this.user.email, this.user.password)
       .then((res) => {

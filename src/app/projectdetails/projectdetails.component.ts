@@ -11,7 +11,7 @@ import {FileHolder} from 'angular2-image-upload';
 })
 export class ProjectdetailsComponent implements OnInit {
 
-
+  //project object
   project = {
     name: '',
     start: '',
@@ -33,15 +33,12 @@ export class ProjectdetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = (params['projectId']);
-      this.projects =  this.authService.getProject(this.id);
+      this.projects = this.authService.getProject(this.id);
     });
 
   }
 
-  upload(event) {
-  //  this.afStorage.upload('/upload/to/this-path', event.target.files[0]);
-  }
-
+  //function for new to do element
   addNewToDo() {
     const todo = window.prompt('Add a todo', 'defaultText');
     const p = document.createElement('p');
@@ -59,8 +56,8 @@ export class ProjectdetailsComponent implements OnInit {
     this.checkboxJSON.push({'label': todo, 'checked': false, 'id:': this.generateId()});
   }
 
+  //function for new note
   addNewNotice(notice) {
-    console.log(notice);
     const note = window.prompt('Add a note', 'defaultText');
     const noticeUl = document.getElementById('notice');
     const list = document.createElement('li');
@@ -71,11 +68,9 @@ export class ProjectdetailsComponent implements OnInit {
     this.noticeJSON.push(note);
   }
 
+  //update the project with the new elements
   async updateProject(project) {
-    console.log('Project:', this.project);
     this.images = await this.authService.saveToStorage(this.imageFiles);
-    console.log('images aus storage: ' + this.images);
-    console.log('Project:', project.name);
     if (this.authService.updateProject(project, this.checkboxJSON, this.noticeJSON, this.images)) {
       confirm('Update successful');
       this.router.navigate(['main']);
@@ -84,11 +79,12 @@ export class ProjectdetailsComponent implements OnInit {
     }
   }
 
+  //function for uploading new image
   async onUploadFinished(file: FileHolder) {
-    console.log(this.imageFiles);
     this.imageFiles.push(file);
   }
 
+  //function for removing image
   onRemoved(file: FileHolder) {
     this.imageFiles.forEach((item, index) => {
       if (item === file) this.imageFiles.splice(index, 1);
@@ -99,6 +95,7 @@ export class ProjectdetailsComponent implements OnInit {
     console.log(state);
   }
 
+  //function for deleting the project
   deleteProject(projectId) {
     if (this.authService.deleteProject(projectId)) {
       confirm('Delete successful');
@@ -108,10 +105,10 @@ export class ProjectdetailsComponent implements OnInit {
     }
   }
 
+  //uid for the project
   generateId() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
-
 
 
 }

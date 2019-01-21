@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
 
   constructor(public authService: AuthService) {
     this.projects = authService.getProjectsForUser();
-
     this.calculateCost();
     this.calculatePendingCost();
   }
@@ -25,6 +24,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 
+  //function for calculating the costs
   calculateCost() {
     this.cost = 0;
     let project: Array<any> = [];
@@ -37,10 +37,10 @@ export class MainComponent implements OnInit {
         }
       },
       error => {
-
       });
   }
 
+  //function for calculating the pending costs
   calculatePendingCost() {
     this.pendingCost = 0;
     let status: Array<any> = [];
@@ -56,6 +56,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //for the percent circle
   getPercent(project) {
     var ret = 0;
     if (project.tasks.length != 0) {
@@ -77,6 +78,7 @@ export class MainComponent implements OnInit {
     return ret;
   }
 
+  //function for filter and search
   filterValue(value) {
     this.searchValue = 'status';
     if (value === 4) {

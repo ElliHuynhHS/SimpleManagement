@@ -41,18 +41,11 @@ body {
   float: left;
 }
 
-.main-info {
-  clear: both;
-  height: 50px;
-  padding: 2px;
-  padding-top: 10px;
-}
-
 .main-header #button {
-  width: 106px;
-  height: 28px;
-  margin-top: 46px;
-  padding-top: 10px;
+  width: 110px;
+  height: 30px;
+  margin-top: 5px;
+  padding-top: 6px;
   float: right;
   background-color: #dddfec;
   text-align: center;
@@ -67,7 +60,7 @@ body {
   font-family: arial, helvetica, sans-serif;
   font-size: 15px;
   color: #74798f;
-  line-height: 12px;
+  line-height: 3px;
 }
 .main-info {
   clear: both;
@@ -188,7 +181,7 @@ body {
 }
 .date-box {
   font-family: arial, sans-serif;
-  margin-top: 20px;
+  margin-top: 32px;
   float: left;
 }
 .date-box h3 {
@@ -196,8 +189,8 @@ body {
   color: #8d93ad;
 }
 .date-box select {
-  height: 32px;
-  width: 115px;
+  height: 30px;
+  width: 110px;
   padding: 5px;
   font-family: arial, sans-serif;
   font-size: 13px;
@@ -245,7 +238,7 @@ textarea {
   width: 40px;
   text-align: center;
   font-family: arial, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: normal;
   padding: 5px;
   color: #8d93ad;
@@ -258,14 +251,12 @@ textarea {
   border-radius: 2px;
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0;
-  /* <-- Apparently some margin are still there even though it's hidden */
 }
 input[type=date] {
   height: 20px;
-  width: 100px;
+  width: 110px;
   font-family: arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
@@ -314,11 +305,6 @@ input[type=date] {
   margin-top: 10px;
 }
 
-/* RADIOS & CHECKBOXES STYLES */
-
-
-/* base styles */
-
 input[type="radio"], input[type="checkbox"] {
   height: 1.2em;
   width: 1.2em;
@@ -329,35 +315,22 @@ input[type="radio"], input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-/* border radius for radio*/
-
-
-/* border radius for checkbox */
-
 input[type="checkbox"] {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 
-/* hover state */
-
 input[type="radio"]:not(:disabled):hover, input[type="checkbox"]:not(:disabled):hover {
   border: 1px solid #ecebf0;
 }
-
-/* focus state */
 
 input[type="radio"]:focus, input[type="checkbox"]:focus {
   outline: none;
 }
 
-/* input checked border color */
-
 input[type="radio"]:checked, input[type="checkbox"]:checked {
   border: 1px solid #ecebf0;
 }
-
-/* checkbox checked */
 
 input[type="checkbox"]:checked:before {
   font-weight: bold;
@@ -368,8 +341,6 @@ input[type="checkbox"]:checked:before {
   font-size: 0.9em;
 }
 
-/* disabled input */
-
 input:disabled {
   opacity: .6;
   box-shadow: none;
@@ -377,14 +348,12 @@ input:disabled {
   box-shadow: none;
 }
 
-/* style label for disabled input */
-
 input:disabled + label {
   opacity: .6;
   cursor: default;
   -webkit-user-select: none;
 }
-.bilder-wrapper img {
+.img-wrapper img {
   border: 2px solid #ecebf0;
 }
 ul.sub-menu {

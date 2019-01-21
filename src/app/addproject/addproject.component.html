@@ -3,7 +3,8 @@
   <div class="navi-wrapper">
     <a class="left" [routerLink]="['/main']"><img src="../../assets/logo.png" width="194px" height="39px"/></a>
     <a class="right" href="#"><img src="../../assets/btn_logout.png" width="111px" height="41px"/></a>
-    <a class="right" [routerLink]="['/profile']"><img src="../../assets/btn_profile.png" width="50px" height="41px"/></a>
+    <a class="right" [routerLink]="['/profile']"><img src="../../assets/btn_profile.png" width="50px"
+                                                      height="41px"/></a>
   </div>
 </div>
 
@@ -25,6 +26,7 @@
         <input type="text" value="" id="name" class="form-control" [(ngModel)]="project.name" name="name" required>
       </div>
       <ul style="margin: 0px;">
+
         <!-- Description -->
         <div class="main-content" style="clear:both;">
           <ul style="margin: 0px;">
@@ -47,19 +49,19 @@
           <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
           <div style="height: auto; width: auto; display: inline;">
             <div class="date-box" style="margin-left: 30px;">
-              <h3>SELECT START</h3>
+              <h3>Select Start</h3>
               <div class="form-group">
                 <input type="date" id="start" class="form-control" [(ngModel)]="project.start" name="start" required>
               </div>
             </div>
-            <div class="date-box" style="margin-left: 10px;">
-              <h3>SELECT DEADLINE</h3>
+            <div class="date-box" style="margin-left: 20px;">
+              <h3>Select Deadline</h3>
               <div class="form-group">
                 <input type="date" id="deadline" class="form-control" [(ngModel)]="project.deadline" name="deadline"
                        required>
               </div>
             </div>
-            <div class="date-box" style="margin-left: 10px;">
+            <div class="date-box" style="margin-left: 20px;">
               <h3>Cost</h3>
               <div class="form-group">
                 <input type="number" value="" class="currency-input" id="cost" class="form-control"
@@ -106,9 +108,9 @@
         <li style="height: 230px;; display: block;" class="p-wrapper pending">
           <div class="p-name bold">Pictures</div>
           <div style="clear: both; height: 1px; width: auto; background: #e2e3e3;"></div>
-          <div style="height: auto; width: auto; display: block;">
+          <div style="height: auto; width: 1100px; display: block;">
             <div class="to-do-wrapper">
-              <div class="bilder-wrapper">
+              <div class="img-wrapper">
                 <ul id="imageUrl">
                   <li>
                     <image-upload

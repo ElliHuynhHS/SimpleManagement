@@ -2,9 +2,10 @@ body {
   margin: 0;
   background-color: #eceff6;
 }
+
 .right {
   float: right;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .left {
@@ -23,6 +24,7 @@ body {
   margin-right: auto;
   padding-top: 12px;
 }
+
 .main-wrapper {
   width: 1124px;
   height: auto;
@@ -30,9 +32,11 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
 .main-wrapper a {
   text-decoration: none;
 }
+
 .main-header h2 {
   font-family: arial, helvetica, sans-serif;
   font-size: 45px;
@@ -41,18 +45,11 @@ body {
   float: left;
 }
 
-.main-info {
-  clear: both;
-  height: 50px;
-  padding: 2px;
-  padding-top: 10px;
-}
-
 .main-header #button {
-  width: 106px;
-  height: 28px;
-  margin-top: 46px;
-  padding-top: 10px;
+  width: 110px;
+  height: 30px;
+  margin-top: 5px;
+  padding-top: 6px;
   float: right;
   background-color: #dddfec;
   text-align: center;
@@ -60,26 +57,31 @@ body {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+
 .main-header #button:hover {
   background-color: #e5e7f5;
 }
+
 .main-header #button a {
   font-family: arial, helvetica, sans-serif;
   font-size: 15px;
   color: #74798f;
   line-height: 12px;
 }
+
 .main-info {
   clear: both;
   height: 50px;
   padding: 2px;
   padding-top: 10px;
 }
+
 .main-info h3 {
   font-family: arial, helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
   color: #a8abbe;
+  margin-top: 15px;
 }
 
 .main-content h3 {
@@ -92,19 +94,23 @@ body {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
+
 .main-content ul {
   padding: 0;
   margin: 0;
 }
+
 .p-wrapper {
   height: 50px;
   list-style: none;
   background: #fff;
   margin-bottom: 17px;
 }
+
 .p-wrapper li {
   display: inline;
 }
+
 .p-name {
   width: 80%;
   height: 20px;
@@ -115,16 +121,19 @@ body {
   font-size: 17px;
   font-weight: normal;
   color: #aaabb0;
-  float:left;
+  float: left;
   line-height: 5px;
 }
+
 .p-input {
   width: 100%;
 }
+
 .bold {
   font-size: 20px;
   font-weight: normal;
 }
+
 .p-earning {
   width: 11.9%;
   float: right;
@@ -139,42 +148,52 @@ body {
   text-align: center;
   line-height: 20px;
 }
+
 .pending {
   border: solid #e2e3e3 1px;
 }
+
 .done {
   border: solid #47b59a 2px;
 }
+
 .cancelled {
   border: solid #e30d0d 2px;
 }
+
 #navi-bottom {
   width: 100%;
   height: 60px;
   bottom: 0;
   background-color: #2a2f35;
   border-bottom: solid #31383e 21px;
-  position:fixed;
+  position: fixed;
 }
+
 #navi-bottom ul {
   display: inline;
 }
+
 #navi-bottom-wrapper {
   width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 12px;
 }
+
 #navi-bottom-wrapper ul {
   list-style-type: none;
 }
+
 #navi-bottom-wrapper li {
   margin-right: 2px;
 }
+
 #navi-bottom-wrapper li a {
   color: #9AA5A5;
   text-decoration: none;
 }
+
 .search-input {
   height: 43px;
   width: 160px;
@@ -187,18 +206,21 @@ body {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
 .date-box {
   font-family: arial, sans-serif;
   margin-top: 20px;
   float: left;
 }
+
 .date-box h3 {
-  font-size: 12px;
+  font-size: 15px;
   color: #8d93ad;
 }
+
 .date-box select {
-  height: 32px;
-  width: 50px;
+  height: 20px;
+  width: 40px;
   padding: 5px;
   font-family: arial, sans-serif;
   font-size: 13px;
@@ -211,6 +233,7 @@ body {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
 .pStatus {
   float: right;
   margin-top: 50px;
@@ -228,9 +251,11 @@ body {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
 textarea:focus, input:focus {
   outline: none;
 }
+
 textarea {
   width: 83%;
   max-width: 83%;
@@ -241,12 +266,13 @@ textarea {
   border: 0;
   padding: 30px;
 }
+
 .currency-input {
   height: 20px;
   width: 40px;
   text-align: center;
   font-family: arial, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: normal;
   padding: 5px;
   color: #8d93ad;
@@ -258,15 +284,15 @@ textarea {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0;
-  /* <-- Apparently some margin are still there even though it's hidden */
 }
+
 input[type=date] {
   height: 20px;
-  width: 100px;
+  width: 110px;
   font-family: arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
@@ -280,6 +306,7 @@ input[type=date] {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
 .to-do-wrapper {
   font-family: arial, sans-serif;
   font-size: 13px;
@@ -288,9 +315,11 @@ input[type=date] {
   margin-left: 30px;
   margin-top: 20px;
 }
-ul{
+
+ul {
   list-style-type: none;
 }
+
 .button-plus {
   height: 25px;
   width: 25px;
@@ -306,11 +335,6 @@ ul{
   margin-bottom: 10px;
 }
 
-/* RADIOS & CHECKBOXES STYLES */
-
-
-/* base styles */
-
 input[type="radio"], input[type="checkbox"] {
   height: 1.2em;
   width: 1.2em;
@@ -321,35 +345,22 @@ input[type="radio"], input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-/* border radius for radio*/
-
-
-/* border radius for checkbox */
-
 input[type="checkbox"] {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 
-/* hover state */
-
 input[type="radio"]:not(:disabled):hover, input[type="checkbox"]:not(:disabled):hover {
   border: 1px solid #ecebf0;
 }
-
-/* focus state */
 
 input[type="radio"]:focus, input[type="checkbox"]:focus {
   outline: none;
 }
 
-/* input checked border color */
-
 input[type="radio"]:checked, input[type="checkbox"]:checked {
   border: 1px solid #ecebf0;
 }
-
-/* checkbox checked */
 
 input[type="checkbox"]:checked:before {
   font-weight: bold;
@@ -376,9 +387,11 @@ input:disabled + label {
   cursor: default;
   -webkit-user-select: none;
 }
-.bilder-wrapper img {
+
+.img-wrapper img {
   border: 2px solid #ecebf0;
 }
+
 ul.sub-menu {
   width: 140px;
   display: none;
@@ -394,6 +407,7 @@ ul.sub-menu {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+
 ul.sub-menu li {
   margin-bottom: 10px;
   border-bottom: 1px solid #3D454C;
@@ -404,6 +418,7 @@ ul.sub-menu li {
 ul.sub-menu li:hover {
   background: #373C43;
 }
+
 .lb-number {
   display: none !important;
 

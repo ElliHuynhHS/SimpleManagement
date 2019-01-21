@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
 
   public userObject: Observable<any[]>;
+  //new user object
   changeObject = {
     password: '',
     confirmPassword: '',
@@ -21,19 +22,22 @@ export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) {
   }
 
+  //field for the username
   ngOnInit() {
     this.userObject = this.authService.getUsername();
-    console.log(this.userObject);
   }
 
+  //function for changing password
   changePassword(password) {
     this.authService.changePassword(password);
   }
 
+  //function for changing email
   changeEmail(email) {
     this.authService.changeEmail(email);
   }
 
+  //save the new data
   onClickSave() {
     if ((this.changeObject.password != null) && (this.changeObject.confirmPassword != null)) {
       this.changePassword(this.changeObject.password);

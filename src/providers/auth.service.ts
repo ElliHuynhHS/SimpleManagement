@@ -26,12 +26,13 @@ export class AuthService {
     );
   }
 
-  /** Method to validate and sign in user with email and password */
+  //sign in user with email
   signInEmail_DB(email, password) {
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
     return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  //register new user
   signUpUser(email, password, username) {
     const _name = username;
     const _userId = this.userDetails.uid;
@@ -57,6 +58,7 @@ export class AuthService {
     }
   }
 
+  //add new project to the db
   addNewProject(project, checkbox, note, images) {
     const name = project.name;
     const start = project.start;
@@ -89,6 +91,7 @@ export class AuthService {
     }
   }
 
+  //get the right project for the user
   getProjectsForUser() {
     return this.db.collection('projects', ref => ref.where('userId', '==', this.userDetails.uid)).valueChanges();
   }
@@ -102,11 +105,10 @@ export class AuthService {
   }
 
   getProject(projectId) {
-    console.log('auth service ' +
-      this.db.collection('projects', ref => ref.where('projectId', '==', projectId)).valueChanges());
     return this.db.collection('projects', ref => ref.where('projectId', '==', projectId)).valueChanges();
   }
 
+  //update project with new data
   updateProject(project, checkbox, note, images) {
     const id = project.projectId;
     const name = project.name;
@@ -138,6 +140,7 @@ export class AuthService {
     }
   }
 
+  //delete project
   deleteProject(projectId) {
     try {
       this.db.collection('projects').ref.doc(projectId).delete();
@@ -147,10 +150,12 @@ export class AuthService {
     }
   }
 
+  //get the username of the user
   getUsername() {
     return this.db.collection('users', ref => ref.where('userId', '==', this.userDetails.uid)).valueChanges();
   }
 
+  //change the password
   changePassword(password) {
     var user = firebase.auth().currentUser;
     var newPassword = password;
@@ -162,6 +167,7 @@ export class AuthService {
     });
   }
 
+  //change the email
   changeEmail(email) {
     var user = firebase.auth().currentUser;
     var newEmail = email;
@@ -173,23 +179,20 @@ export class AuthService {
     });
   }
 
+  //save image to storage
   async saveToStorage(file) {
     for (let i = 0; i < file.length; i++) {
-      console.log('Url to Storage:' + file[i].file);
       var url = await this.setImageToStorage(file[i].file);
       this.profileImageUrl.push(url);
     }
     return this.profileImageUrl;
   }
 
+  //get images from storage
   async setImageToStorage(file) {
-    console.log('SetImageToStorage Methode StorageRef ' + file.name);
-
     this.storageRef = firebase.storage().ref('profileImages/' + file.name);
-    console.log('SetImageToStorage Methode StorageRef ' + this.storageRef);
     return this.storageRef.put(file).then(async function (snapshot) {
       var profileImage = snapshot.ref.getDownloadURL();
-      console.log(profileImage);
       return profileImage;
     });
   }
